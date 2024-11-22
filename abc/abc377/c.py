@@ -10,6 +10,7 @@ knight = [list(map(int, input().split())) for _ in range(m)]
 unsafe = [[]]
 p = unsafe.pop(0)
 
+#ナイトが行けるマスの座標を記録
 for i in range(m):
     unsafe.append( [knight[i][0], knight[i][1]] )
     unsafe.append( [knight[i][0]+2, knight[i][1]+1] )
@@ -21,8 +22,10 @@ for i in range(m):
     unsafe.append( [knight[i][0]+1, knight[i][1]-2] )
     unsafe.append( [knight[i][0]+2, knight[i][1]-1] )
 
+#重複を排除
 unsafe = list(map(list, set(map(tuple, unsafe))))
 
+#置けるマスを計算 unsafeリストの座標が盤面の中ならsafeを減らす
 safe = n**2
 
 for i in range (len(unsafe)):
